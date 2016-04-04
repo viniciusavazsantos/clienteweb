@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Cadastrar Cliente</title>
+		<script type="text/javascript" src="CadastrarCliente.js"> </script>
+
+		
+		
+	</head>
+	
+	
+	<body>
+		
+	<form name="cadastrarCliente">
+		<table border = "10" align = "center" >
+			
+		
+				<tr align = "center">
+					<td colspan = "2"> <b>Cadastro de Clientes</b></td>
+				</tr>
+				
+				<tr>
+					<td >CPF:</td>
+					
+					<td id = "tabcpf">
+						<div id = "divcpf"> 
+							<input type = "text" maxlength = "14" name = "tx_cpf" size = "14" onblur = "validarCPF(this.value)" onkeypress = "mascaraMutuario(this, cpf)">
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Nome:</td>
+					<td id = "tabnome"><input type = "text" maxlength = "80" name = "tx_nome" size = "80" onkeypress = "return validarnome(event)" onkeyup="validaMaiuscula(this)"/> </td> 
+
+				</tr>
+				
+				<tr>
+					<td>Endereço:</td>
+					<td id = "tabendereco"><input type = "text" maxlength = "80" name = "tx_endereco" size = "80" onkeyup="validaMaiuscula(this)" ></td>
+				</tr>
+				
+				<tr>
+					<td>Cidade:</td>
+					<td id = "tabcidade"><input type = "text" maxlength = "50" name = "tx_cidade" size = "50" onkeyup="validaMaiuscula(this)"> </td>
+				</tr>
+				
+				<tr>
+					<td>Sexo:</td>
+					<td id = "tabsexo"><select name = "tx_sexo">
+						<option>Escolher Sexo</option>
+						<option>Masculino</option>
+						<option>Feminino</option>
+
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Telefone:</td>
+					<td id = "tabtelefone"><input type = "text" maxlength = "15" name = "tx_telefone" size = "12" maxlength = "12" OnKeyPress="mascaraTelefone('##-####-####', this)" onkeydown = "return apenasNumero(event)"> </td>
+				</tr>
+				
+				<tr>
+					<td>E-mail (Login):</td>
+					<td id = "tabemail"><input name = "tx_email" type ="text" maxlength = "40" size = "40" onblur = "validarEmail(this.value)"></td>
+				</tr>
+				
+				<tr>
+					<td>Senha:</td>
+					<td id = "tabsenha"><input type = "password" maxlength = "15" name = "tx_senha" size = "15" onblur = "validarSenha(this.value)"></td>
+				</tr>
+				
+				<tr>
+					<td>Receber Promoções:</td>
+					<td id = "tabpromo"><input type = "radio" name = "tx_receberP" onclick = "teste()">Sim <input type = "radio" onclick = "teste()" name = "tx_receberP">Não 
+					<div name="tx_div" id="tx_div" style = "color:red"></div></span> </td>
+				</tr>
+				
+				<tr>
+					<td>Obs:</td>
+					<td id = "tabobs"><textarea rows = "4" cols ="50" name = "tx_obs" maxlength = "200"></textarea></td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td><input class="" type = "button" value = "Enviar" onclick = "validarTudo()"/>   <input type = "button" value = "Valores" onclick = "imprimir()"></td>
+						
+				</tr>
+				
+				
+		</table>	
+	</form>			
+	</body>
+</html>
