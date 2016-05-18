@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cadastrar Cliente</title>
+        <script type="text/javascript" src="CadastrarCliente.js"></script>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+
+        <style>
+            .alert {
+                width: 100%;
+            }
+            .glyphicon-remove{
+                color: red;
+            }
+            .glyphicon-ok{
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container thumbnails center">
+            <div> 
+                <h2><span class="label label-primary">Cadastro de Clientes</span></h2>
+            </div>
+            <br />
+            <form class="form-group" id="cadastrarCliente">
+                <div class="row">
+                    <div class="col-xs-4" id = "tabcpf">
+                        <div id = "divcpf"> 
+                            <input class="alert alert-warning" type="text" id= "tx_cpf" onblur = "validarCPF(this.value)" placeholder="CPF" onkeypress = "mascaraMutuario(this, cpf)" />
+                        </div>
+                    </div>
+                    <div id="teste_cpf" class="col-xs-1"> 
+                        <span class="glyphicon glyphicon-ok" id="cpf_ok" style="display:none"> </span>
+                        <span class="glyphicon glyphicon-remove" id="cpf_er" style="display:none"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-11" id = "tabnome">
+                        <input class="alert alert-warning" type = "text" id="tx_nome" onkeypress = "return validarnome(event)" placeholder="Nome" onkeyup="validaMaiuscula(this)"  onblur = "tamanho_nome()"/>
+                    </div> 
+                    <div id="teste_nome" class="col-xs-1"> 
+                        <span class="glyphicon glyphicon-ok" id="nome_ok" style="display:none"> </span>
+                        <span class="guphicon glyphicon glyphicon-remove" id="nome_er" style="display:none"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-11" id = "tabendereco">
+                        <input class="alert alert-warning" type = "text" maxlength = "80" id = "tx_endereco" placeholder="Endereço" onkeyup="validaMaiuscula(this)" onblur="tamanho_endereco()" />
+                    </div>
+                    <div id="teste_endereco" class="col-xs-1"> 
+                        <span class="glyphicon glyphicon-ok" id="endereco_ok" style="display:none"> </span>
+                        <span class="guphicon glyphicon glyphicon-remove" id="endereco_er" style="display:none"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-11" id = "tabcidade">
+                        <input class="alert alert-warning" type = "text" maxlength = "50" id = "tx_cidade" placeholder="Cidade" onkeyup="validaMaiuscula(this)" onblur="tamanho_cidade()" /> 
+                    </div>
+                    <div id="teste_cidade" class="col-xs-1"> 
+                        <span class="glyphicon glyphicon-ok" id="cidade_ok" style="display:none"> </span>
+                        <span class="guphicon glyphicon glyphicon-remove" id="cidade_er" style="display:none"></span>
+                    </div>				
+                </div>
+                <div class="row">
+                    <div class="col-xs-4" id = "tabsexo">
+                        <select class="alert alert-warning"  onchange="tamanho_sexo()" id = "tx_sexo">
+                            <option >Escolher Sexo</option>
+                            <option>Masculino</option>
+                            <option>Feminino</option>
+                        </select>
+                    </div>
+                    <div id="texte_sexo" class="col-xs-1"> 
+                        <span class="glyphicon glyphicon-ok" id="sexo_ok" style="display:none"> </span>
+                        <span class="guphicon glyphicon glyphicon-remove" id="sexo_er" style="display:none"></span>
+                    </div>									
+                </div>			
+
+                <div class="row">
+                    <div class="col-xs-11" id = "tabtelefone">
+                        <input class="alert alert-warning" type = "text"  id = "tx_telefone" maxlength = "12" placeholder="Telefone" OnKeyPress="mascaraTelefone('##-####-####', this)" onkeydown = "return apenasNumero(event)" />
+                    </div>
+                </div>
+
+                <div class="row">			
+                    <div class="col-xs-11" id = "tabemail">
+                        <input class="alert alert-warning"  id = "tx_email" type ="text" maxlength = "40" placeholder="E-Mail" onblur = "validarEmail(this.value)" />
+                    </div>
+                    <div id="texte_email" class="col-xs-1"> 
+                        <span class="glyphicon glyphicon-ok" id="email_ok" style="display:none"> </span>
+                        <span class="guphicon glyphicon glyphicon-remove" id="email_er" style="display:none"></span>
+                    </div>					
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-11" id="tabsenha">
+                        <input class="alert alert-warning" type = "password" maxlength = "15" id = "tx_senha" placeholder="Senha" onblur = "validarSenha(this.value)" />
+                    </div>	
+                </div>
+
+                <div class="row">
+                    <div id = "tabpromo">
+                        <div class="col-xs-12">
+                            <span class="label label-warning" id="promo"> Receber Promoções?</span>
+                        </div>
+                        <div  class="col-xs-6">
+                            <input type = "radio" name= "radio" id = "tx_recebers" onclick="Mensagem()"> Sim 
+                            <input type = "radio" name= "radio" id = "tx_receberp" onclick="Mensagem()" > Não
+                        </div>
+                    </div>
+                </div>
+                <div id="tx_div" class="label label-info"></div>
+                <br />			
+                <div class="row">
+                    <div class="col-xs-12"  id = "tabobs">
+                        <textarea class="alert alert-warning"  placeholder="Observação" id = "tx_obs" maxlength="200"></textarea>
+                    </div>
+                </div>
+                <div>
+                </div>
+                <br />
+                <div>
+                    <input class="btn btn-success" type = "button" value = "Enviar" onclick = "validarTudo()"/>   
+                    <input class="btn btn-danger" type = "button" value = "Valores" onclick = "imprimir()" />
+                </div>
+            </form>		
+        </div>		
+    </body>
+</html>
